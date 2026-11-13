@@ -1,0 +1,11 @@
+{
+    "profiles": {
+        "SantaGiftAdvisor": {
+            "commandName": "Project",
+            "environmentVariables": {
+                "DOTNET_ROOT": "C:\\Program Files\\dotnet",
+                "DOTNET_ROOT_X64": "C:\\Program Files\\dotnet"
+            }
+        }
+    }
+}

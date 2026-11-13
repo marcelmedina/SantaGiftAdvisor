@@ -1,0 +1,21 @@
+{
+    "version": "0.2.0",
+    "configurations": [
+        {
+            "name": "SantaGiftAdvisor",
+            "type": "coreclr",
+            "request": "launch",
+            "preLaunchTask": "build",
+            "program": "${workspaceFolder}/bin/Debug/net11.0/SantaGiftAdvisor.dll",
+            "cwd": "${workspaceFolder}",
+            "console": "integratedTerminal",
+            "windows": {
+                "program": "${workspaceFolder}\\bin\\Debug\\net11.0\\SantaGiftAdvisor.exe",
+                "env": {
+                    "DOTNET_ROOT": "${env:ProgramFiles}\\dotnet",
+                    "DOTNET_ROOT_X64": "${env:ProgramFiles}\\dotnet"
+                }
+            }
+        }
+    ]
+}

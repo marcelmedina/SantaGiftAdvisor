@@ -1,0 +1,19 @@
+{
+    "version": "2.0.0",
+    "tasks": [
+        {
+            "label": "build",
+            "type": "process",
+            "command": "dotnet",
+            "windows": {
+                "command": "${env:ProgramFiles}\\dotnet\\dotnet.exe"
+            },
+            "args": [
+                "build",
+                "${workspaceFolder}\\SantaGiftAdvisor.csproj"
+            ],
+            "problemMatcher": "$msCompile",
+            "group": "build"
+        }
+    ]
+}
