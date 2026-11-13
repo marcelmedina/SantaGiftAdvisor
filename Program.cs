@@ -1,6 +1,7 @@
 using Azure.AI.Projects;
 using Azure.Identity;
 using Microsoft.Agents.AI;
+using SantaGiftAdvisor;
 
 var endpoint = Environment.GetEnvironmentVariable("FOUNDRY_PROJECT_ENDPOINT");
 if (string.IsNullOrWhiteSpace(endpoint))
