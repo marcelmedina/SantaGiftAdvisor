@@ -1,0 +1,30 @@
+@baseUrl = http://localhost:8088
+
+### First turn
+# @name firstTurn
+POST {{baseUrl}}/responses
+Content-Type: application/json
+
+{
+  "input": "Find a gift for a 12-year-old who likes art, under $50.",
+  "stream": false
+}
+
+### Follow-up using the stored conversation
+POST {{baseUrl}}/responses
+Content-Type: application/json
+
+{
+  "input": "Is it in stock?",
+  "previous_response_id": "{{firstTurn.response.body.$.id}}",
+  "stream": false
+}
+
+### SSE response
+POST {{baseUrl}}/responses
+Content-Type: application/json
+
+{
+  "input": "Find a gift for a 10-year-old who likes space, under $80.",
+  "stream": true
+}
