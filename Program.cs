@@ -1,6 +1,7 @@
 using Azure.AI.Projects;
 using Azure.Identity;
 using Microsoft.Agents.AI;
+using Microsoft.Agents.AI.Foundry.Hosting;
 using SantaGiftAdvisor;
 
 var endpoint = Environment.GetEnvironmentVariable("FOUNDRY_PROJECT_ENDPOINT");
@@ -24,25 +25,9 @@ AIAgent agent = new AIProjectClient(new Uri(endpoint), new DefaultAzureCredentia
             """,
         tools: [GiftTools.SearchGiftsFunction, GiftTools.CheckGiftAvailabilityFunction]);
 
-var session = await agent.CreateSessionAsync();
-Console.WriteLine("Santa's Gift Advisor");
-Console.WriteLine("Tell me who you're shopping for, their interests, and your budget.");
-Console.WriteLine("Type 'exit' to quit.\n");
+var builder = AgentHost.CreateBuilder(args);
+builder.Services.AddFoundryResponses(agent);
+builder.RegisterProtocol("responses", endpoints => endpoints.MapFoundryResponses());
 
-while (true)
-{
-    Console.Write("You: ");
-    var input = Console.ReadLine();
-    if (string.IsNullOrWhiteSpace(input)) continue;
-    if (input.Equals("exit", StringComparison.OrdinalIgnoreCase)) break;
-
-    try
-    {
-        var response = await agent.RunAsync(input, session);
-        Console.WriteLine($"\nSanta: {response}\n");
-    }
-    catch (Exception ex)
-    {
-        Console.WriteLine($"\nSomething went wrong: {ex.Message}\n");
-    }
-}
+var app = builder.Build();
+app.Run();

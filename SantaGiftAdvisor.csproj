@@ -7,5 +7,6 @@
   </PropertyGroup>
   <ItemGroup>
     <PackageReference Include="Microsoft.Agents.AI.Foundry" Version="*-*" />
+    <PackageReference Include="Microsoft.Agents.AI.Foundry.Hosting" Version="1.28.0-preview.261106.1" />
   </ItemGroup>
 </Project>
