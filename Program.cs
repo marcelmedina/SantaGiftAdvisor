@@ -11,7 +11,7 @@ if (string.IsNullOrWhiteSpace(endpoint))
     return;
 }
 
-var model = Environment.GetEnvironmentVariable("FOUNDRY_MODEL") ?? "gpt-4.1";
+var model = Environment.GetEnvironmentVariable("FOUNDRY_MODEL") ?? "gpt-5.4-mini";
 AIAgent agent = new AIProjectClient(new Uri(endpoint), new DefaultAzureCredential())
     .AsAIAgent(
         model: model,
