@@ -26,7 +26,7 @@ AIAgent agent = new AIProjectClient(new Uri(endpoint), new DefaultAzureCredentia
         tools: [GiftTools.SearchGiftsFunction, GiftTools.CheckGiftAvailabilityFunction]);
 
 var builder = AgentHost.CreateBuilder(args);
-builder.Services.AddFoundryResponses(agent);
+builder.WebApplicationBuilder.AddFoundryResponses(agent);
 builder.RegisterProtocol("responses", endpoints => endpoints.MapFoundryResponses());
 
 var app = builder.Build();
